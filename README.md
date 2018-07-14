@@ -1,6 +1,26 @@
 Terraform Provider
 ==================
 
+------
+
+# Obsolete!
+This repository is obsolete since [PR #3723](https://github.com/terraform-providers/terraform-provider-aws/pull/3723#issuecomment-402465389) has been merged on the upstream repository.
+
+To migrate from this to the mainline provider seamlessly:
+
+1. Make sure your plan runs with no changes.
+1. Change your provider blocks to use version `~> 1.26.0`
+1. Pull your state: `terraform state pull > my.state`
+1. Replace all instances of `ipv4_cidr_block` with `cidr_block` in all Terraform files including the state
+1. Replace all instances of `aws_vpc_associate_cidr_block` with `aws_vpc_ipv4_cidr_block_association` in all Terraform files including the state
+1. Push your state: `terraform state push my.state`
+1. Run `terraform init` to download the new provider
+1. Run `terraform plan`. There should be no changes.
+
+This repository will be deleted after August 5th, 2018.
+
+------
+
 - Website: https://www.terraform.io
 - [![Gitter chat](https://badges.gitter.im/hashicorp-terraform/Lobby.png)](https://gitter.im/hashicorp-terraform/Lobby)
 - Mailing list: [Google Groups](http://groups.google.com/group/terraform-tool)
